@@ -3,7 +3,7 @@
 // Required parameters:
 // @raycast.schemaVersion 1
 // @raycast.title Copy Markdown URL and Title
-// @raycast.mode silent
+// @raycast.mode inline
 //
 // Optional parameters:
 // @raycast.packageName Copy Markdown URL and Title
@@ -29,9 +29,10 @@ const chromiumBrowsers = [
   "Brave Browser",
   "Opera",
   "Vivaldi",
-  "Microsoft Edge",
+  // "Microsoft Edge" // doesn't support activeTab properties
 ];
 const webkitBrowser = ["Safari", "Webkit"];
+const theRest = ["Firefox", "Microsoft Edge"];
 
 if (chromiumBrowsers.includes(appName)) {
   const activeWindow = Application(appName).windows[0];
@@ -46,11 +47,14 @@ if (webkitBrowser.includes(appName)) {
   title = Application(appName).documents[0].name();
 }
 
-if (appName == "Firefox") {
+if (theRest.includes(appName)) {
   systemEvents.keystroke("l", { using: "command down" });
   delay(0.1);
   systemEvents.keystroke("c", { using: "command down" });
   delay(0.1);
+  /// escape 2x - clear the selection of address bar
+  systemEvents.keyCode(53); 
+  systemEvents.keyCode(53);
   url = app.theClipboard();
   title = frontProcess
     .windows()
