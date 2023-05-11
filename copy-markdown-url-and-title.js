@@ -3,7 +3,7 @@
 // Required parameters:
 // @raycast.schemaVersion 1
 // @raycast.title Copy Markdown URL and Title
-// @raycast.mode fullOutput
+// @raycast.mode compact
 //
 // Optional parameters:
 // @raycast.packageName Copy Markdown URL and Title
