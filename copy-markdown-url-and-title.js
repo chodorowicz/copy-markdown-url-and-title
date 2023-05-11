@@ -3,7 +3,7 @@
 // Required parameters:
 // @raycast.schemaVersion 1
 // @raycast.title Copy Markdown URL and Title
-// @raycast.mode inline
+// @raycast.mode fullOutput
 //
 // Optional parameters:
 // @raycast.packageName Copy Markdown URL and Title
@@ -29,15 +29,22 @@ const chromiumBrowsers = [
   "Brave Browser",
   "Opera",
   "Vivaldi",
-  // "Microsoft Edge" // doesn't support activeTab properties
 ];
 const webkitBrowser = ["Safari", "Webkit"];
-const theRest = ["Firefox", "Microsoft Edge"];
+const theRest = ["Firefox"];
 
 if (chromiumBrowsers.includes(appName)) {
   const activeWindow = Application(appName).windows[0];
   const activeTab = activeWindow.activeTab();
+  url = activeTab.url();
+  title = activeTab.name();
+}
 
+// Microsoft Edge doesn't work properly with activeWindow.activeTab()
+if (appName === "Microsoft Edge") {
+  const activeWindow = Application(appName).windows[0];
+  const activeTabIndex = activeWindow.activeTabIndex() - 1;
+  const activeTab = activeWindow.tabs[activeTabIndex];
   url = activeTab.url();
   title = activeTab.name();
 }
@@ -53,8 +60,8 @@ if (theRest.includes(appName)) {
   systemEvents.keystroke("c", { using: "command down" });
   delay(0.1);
   /// escape 2x - clear the selection of address bar
-  systemEvents.keyCode(53); 
-  systemEvents.keyCode(53);
+  // systemEvents.keyCode(53);
+  // systemEvents.keyCode(53);
   url = app.theClipboard();
   title = frontProcess
     .windows()
