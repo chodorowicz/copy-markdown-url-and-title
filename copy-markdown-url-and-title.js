@@ -74,5 +74,5 @@ if (title === undefined && url === undefined) {
   console.log("Could not copy URL or title.");
 } else {
   app.setTheClipboardTo(`[${title}](${url})`);
-  console.log(`Copier URL and title from ${appName}.`);
+  console.log(`Copied URL and title from ${appName}.`);
 }
