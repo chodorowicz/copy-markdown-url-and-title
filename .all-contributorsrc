@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "mattstein",
+      "name": "Matt Stein",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2488775?v=4",
+      "profile": "https://mattstein.com",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "copy-markdown-url-and-title",
+  "projectOwner": "chodorowicz"
+}
