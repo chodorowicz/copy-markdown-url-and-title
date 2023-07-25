@@ -15,3 +15,14 @@
 - Safari
 - Firefox
   - Firefox integration is the *worst* since Firefox doesn't support direct AppleScript automation, and the script uses System Events and keystrokes in that case.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
