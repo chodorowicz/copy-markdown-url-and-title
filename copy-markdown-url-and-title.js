@@ -3,7 +3,7 @@
 // Required parameters:
 // @raycast.schemaVersion 1
 // @raycast.title Copy Markdown URL and Title
-// @raycast.mode compact
+// @raycast.mode silent
 //
 // Optional parameters:
 // @raycast.packageName Copy Markdown URL and Title
@@ -13,6 +13,7 @@
 // @raycast.description Copy URL and title from the current browser as markdown.
 // @raycast.author Jakub Chodorowicz
 // @raycast.authorURL https://github.com/chodorowicz
+// script version 1.1
 
 const systemEvents = Application("System Events");
 const frontProcess = systemEvents.processes.whose({ frontmost: true })[0];
@@ -31,7 +32,9 @@ const chromiumBrowsers = [
   "Vivaldi",
 ];
 const webkitBrowser = ["Safari", "Webkit"];
-const theRest = ["Firefox"];
+// Arc fails when trying to run JXA automation on it (📆 2023-07-29)
+//  so we're using here traditional systemEvents approach
+const theRest = ["Firefox", "Arc"];
 
 if (chromiumBrowsers.includes(appName)) {
   const activeWindow = Application(appName).windows[0];
@@ -56,12 +59,11 @@ if (webkitBrowser.includes(appName)) {
 
 if (theRest.includes(appName)) {
   systemEvents.keystroke("l", { using: "command down" });
-  delay(0.1);
+  delay(0.2);
   systemEvents.keystroke("c", { using: "command down" });
-  delay(0.1);
-  /// escape 2x - clear the selection of address bar
-  // systemEvents.keyCode(53);
-  // systemEvents.keyCode(53);
+  delay(0.2);
+  /// escape clear the selection of address bar
+  systemEvents.keyCode(53);
   url = app.theClipboard();
   title = frontProcess
     .windows()
