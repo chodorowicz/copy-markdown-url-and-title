@@ -34,7 +34,7 @@ const chromiumBrowsers = [
 const webkitBrowser = ["Safari", "Webkit"];
 // Arc fails when trying to run JXA automation on it (📆 2023-07-29)
 //  so we're using here traditional systemEvents approach
-const theRest = ["Firefox", "Arc"];
+const theRest = ["Firefox", "Arc", "Zen Browser"];
 
 if (chromiumBrowsers.includes(appName)) {
   const activeWindow = Application(appName).windows[0];
