@@ -15,9 +15,11 @@
   - Opera,
   - Vivaldi,
   - Microsoft Edge
+  - Arc
 - Safari
-- Firefox
+- Firefox based browsers
   - Firefox integration is the *worst* since Firefox doesn't support direct AppleScript automation, and the script uses System Events and keystrokes in that case.
+  - Zen Browser
 
 ## Contributors
 
