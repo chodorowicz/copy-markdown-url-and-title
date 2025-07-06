@@ -1,0 +1,26 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    devDependencies:
+      '@johnlindquist/kit':
+        specifier: link:/Users/cho/.kit
+        version: link:../../../.kit
+      '@typescript/lib-dom':
+        specifier: npm:@johnlindquist/no-dom@1.0.2
+        version: '@johnlindquist/no-dom@1.0.2'
+
+packages:
+
+  '@johnlindquist/no-dom@1.0.2':
+    resolution: {integrity: sha512-LsbpAKEG68+pMsQRXOOvYFUSsq5mzfvgmg5WSh5tu9onF+farAD3wpsZW1gOuCTLkQ22QoBJ0hHorN6p12S9Ew==}
+    engines: {node: '>= 14.0.0', npm: '>= 6.0.0'}
+
+snapshots:
+
+  '@johnlindquist/no-dom@1.0.2': {}
