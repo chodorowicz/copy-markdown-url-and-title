@@ -33,7 +33,9 @@ async function setUrlToClipboard(url: string, title: string) {
 }
 
 if (app === "Google Chrome") {
-  const title = info.windowTitle;
+  const title = await applescript(`
+    tell application "${app}" to return title of active tab of front window
+  `);
   const url = await applescript(`
     tell application "${app}" to return URL of active tab of front window
   `);
