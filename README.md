@@ -21,6 +21,10 @@
   - Firefox integration is the *worst* since Firefox doesn't support direct AppleScript automation, and the script uses System Events and keystrokes in that case.
   - Zen Browser
 
+
+## Script kit version;
+[./script-kit/README.md]
+
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
