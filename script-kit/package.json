@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "engines": {
+    "node": "22.9.0"
+  },
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "@johnlindquist/kit": "link:/Users/cho/.kit",
+    "@typescript/lib-dom": "npm:@johnlindquist/no-dom@1.0.2"
+  }
+}
