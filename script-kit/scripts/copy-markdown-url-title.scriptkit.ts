@@ -52,6 +52,7 @@ if (app === "Firefox" || app === "Zen") {
       end tell
     end tell
   `);
-
+  await wait(KEYSTROKE_TIMEOUT);
+  await keyboard.tap(Key.Escape); 
   await setUrlToClipboard(url, title);
 }
