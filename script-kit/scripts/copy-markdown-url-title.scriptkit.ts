@@ -13,6 +13,7 @@ const info = await getActiveAppInfo();
 const browsers = {
   "org.mozilla.firefox": "Firefox",
   "app.zen-browser.zen": "Zen",
+  "company.thebrowser.Browser": "Arc",
   "com.google.Chrome": "Google Chrome",
 };
 
@@ -32,7 +33,7 @@ async function setUrlToClipboard(url: string, title: string) {
   await clipboard.writeText(`[${title}](${url})`);
 }
 
-if (app === "Google Chrome") {
+if (app === "Google Chrome" || app === "Arc") {
   const title = await applescript(`
     tell application "${app}" to return title of active tab of front window
   `);
