@@ -58,13 +58,35 @@ if (webkitBrowser.includes(appName)) {
 }
 
 if (theRest.includes(appName)) {
+  // Ensure the browser actually receives the keystrokes.
+  Application(appName).activate();
+  delay(0.1);
+
+  // Sentinel lets us detect when the clipboard has actually been updated.
+  const sentinel = `__copy-md-url__${Date.now()}__`;
+  app.setTheClipboardTo(sentinel);
+
   systemEvents.keystroke("l", { using: "command down" });
-  delay(0.2);
+  delay(0.15);
+  systemEvents.keystroke("a", { using: "command down" });
+  delay(0.05);
   systemEvents.keystroke("c", { using: "command down" });
-  delay(0.2);
-  /// escape clear the selection of address bar
+
+  let clipboard = sentinel;
+  for (let i = 0; i < 30 && clipboard === sentinel; i++) {
+    delay(0.05);
+    clipboard = app.theClipboard();
+  }
+  /// escape clears the selection of address bar
   systemEvents.keyCode(53);
-  url = app.theClipboard();
+
+  if (clipboard === sentinel) {
+    console.log(
+      "Clipboard never updated — Cmd+C likely didn't reach the address bar.",
+    );
+  } else {
+    url = clipboard;
+  }
   title = frontProcess
     .windows()
     .find((window) => window.attributes.byName("AXMain").value() === true)
@@ -72,8 +94,8 @@ if (theRest.includes(appName)) {
     .value();
 }
 
-if (title === undefined && url === undefined) {
-  console.log("Could not copy URL or title.");
+if (title === undefined || url === undefined) {
+  console.log(`Could not copy URL or title (title=${title}, url=${url}).`);
 } else {
   app.setTheClipboardTo(`[${title}](${url})`);
   console.log(`Copied URL and title from ${appName}.`);
